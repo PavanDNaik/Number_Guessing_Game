@@ -14,17 +14,16 @@ window.addEventListener("DOMContentLoaded",()=>{
     }
     
     var value=getRandom();
-    console.log(value);
     var count=0;
     const submit = document.querySelector("#submit");
     const guess = document.querySelector("#guessField");
     const guesses = document.querySelector("#guesses");
     const lh = document.querySelector("#lowOrHi");
 
-    
+    guess.focus();
     guess.addEventListener("keydown",(e)=>{
         
-        if(e.keyCode == 13 && count < 10){
+        if(e.keyCode == 13 && count < 10 && !isNaN(guess.value) && guess.value !== ""){
             gameChanger();
         }
     });
@@ -32,7 +31,6 @@ window.addEventListener("DOMContentLoaded",()=>{
 
     function gameChanger(){
         count++;
-        console.log(count);
         if(guess.value == value){
             guesses.textContent = `You Won! the number was ${value}`;
             lh.textContent="";
@@ -58,6 +56,7 @@ window.addEventListener("DOMContentLoaded",()=>{
             guesses.textContent += ` ,${guess.value}`;
             guess.value="";
         }
+
     }
 
     function endGame(){
