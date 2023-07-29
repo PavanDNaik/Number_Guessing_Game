@@ -19,7 +19,14 @@ window.addEventListener("DOMContentLoaded",()=>{
     const guess = document.querySelector("#guessField");
     const guesses = document.querySelector("#guesses");
     const lh = document.querySelector("#lowOrHi");
-    submit.addEventListener("click",()=>{
+
+    submit.addEventListener("click",gameManager);
+    guess.addEventListener("keydown",(e)=>{
+        if(e.keyCode == 13 || e.which == 13){
+            gameManager();
+        }
+    });
+    function gameManager(){
         if(guess.value == value){
             guesses.textContent = `You Won the number was ${value}`;
             lh.textContent="";
@@ -45,10 +52,11 @@ window.addEventListener("DOMContentLoaded",()=>{
             guesses.textContent += ` ,${guess.value}`;
             guess.value="";
         }
-    });
+    }
+
     function endGame(){
      const rerun=document.createElement("button");
-     rerun.innerHTML="One More"
+     rerun.innerHTML="One More";
      const res= document.querySelector("#results");
      res.appendChild(rerun);
 
@@ -56,6 +64,8 @@ window.addEventListener("DOMContentLoaded",()=>{
         guess.textContent="";
         guesses.textContent="";
         value=getRandom();
+        const border_rm= document.querySelector("#results");
+        border_rm.style.border = "";
         count=0;
         res.removeChild(rerun);
     });
