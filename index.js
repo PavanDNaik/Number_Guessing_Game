@@ -14,26 +14,32 @@ window.addEventListener("DOMContentLoaded",()=>{
     }
     
     var value=getRandom();
+    console.log(value);
     var count=0;
     const submit = document.querySelector("#submit");
     const guess = document.querySelector("#guessField");
     const guesses = document.querySelector("#guesses");
     const lh = document.querySelector("#lowOrHi");
 
-    submit.addEventListener("click",gameManager);
+    
     guess.addEventListener("keydown",(e)=>{
-        if(e.keyCode == 13 || e.which == 13){
-            gameManager();
+        
+        if(e.keyCode == 13 && count < 10){
+            gameChanger();
         }
     });
-    function gameManager(){
+    submit.addEventListener("click",gameChanger);
+
+    function gameChanger(){
+        count++;
+        console.log(count);
         if(guess.value == value){
-            guesses.textContent = `You Won the number was ${value}`;
+            guesses.textContent = `You Won! the number was ${value}`;
             lh.textContent="";
             guess.value="";
             endGame();
         }
-        else if( ++count === 1){
+        else if( count === 1){
             guesses.textContent = `guesses: ${guess.value}`;
             lh.textContent=highOrLow(guess.value,value);
             const temp= document.querySelector("#results");
@@ -41,8 +47,8 @@ window.addEventListener("DOMContentLoaded",()=>{
             guess.value="";
 
         }
-        else if( ++count === 10){
-            guesses.textContent = `You Lost the number was ${value}`;
+        else if( count === 10){
+            guesses.textContent = `You Lost! the number was ${value}`;
             lh.textContent="";
             guess.value="";
             endGame();
@@ -55,11 +61,11 @@ window.addEventListener("DOMContentLoaded",()=>{
     }
 
     function endGame(){
+     count = 10;
      const rerun=document.createElement("button");
      rerun.innerHTML="One More";
      const res= document.querySelector("#results");
      res.appendChild(rerun);
-
     rerun.addEventListener("click",()=>{
         guess.textContent="";
         guesses.textContent="";
