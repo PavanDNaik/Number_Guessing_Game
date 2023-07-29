@@ -1,15 +1,15 @@
 window.addEventListener("DOMContentLoaded",()=>{
 
     function getRandom(){
-        return Math.floor(Math.random()*(100-1));
+        return Math.floor(Math.random()*(500-1));
     }
 
     function highOrLow(v1,v2){
         if(v1 > v2){
-            return "your answer is Higher";
+            return "your choice is HIGHER than the answer";
         }
         else {
-            return "your answer is Lower";
+            return "your choice is LOWER than the answer";
         }
     }
     
@@ -21,13 +21,14 @@ window.addEventListener("DOMContentLoaded",()=>{
     const lh = document.querySelector("#lowOrHi");
 
     guess.focus();
-    guess.addEventListener("keydown",(e)=>{
-        
-        if(e.keyCode == 13 && count < 10 && !isNaN(guess.value) && guess.value !== ""){
+    guess.addEventListener("keydown",(e) => {
+        if(e.keyCode == 13 && count < 10 && guess.value <= 500)
             gameChanger();
-        }
     });
-    submit.addEventListener("click",gameChanger);
+    submit.addEventListener("click",() => {
+        if(count < 10 && guess.value <= 500)
+            gameChanger();
+    });
 
     function gameChanger(){
         count++;
