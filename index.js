@@ -19,7 +19,14 @@ window.addEventListener("DOMContentLoaded",()=>{
     const guess = document.querySelector("#guessField");
     const guesses = document.querySelector("#guesses");
     const lh = document.querySelector("#lowOrHi");
-    submit.addEventListener("click",()=>{
+
+    submit.addEventListener("click",gameManager);
+    guess.addEventListener("keydown",(e)=>{
+        if(e.keyCode == 13 || e.which == 13){
+            gameManager();
+        }
+    });
+    function gameManager(){
         if(guess.value == value){
             guesses.textContent = `You Won the number was ${value}`;
             lh.textContent="";
@@ -45,7 +52,8 @@ window.addEventListener("DOMContentLoaded",()=>{
             guesses.textContent += ` ,${guess.value}`;
             guess.value="";
         }
-    });
+    }
+
     function endGame(){
      const rerun=document.createElement("button");
      rerun.innerHTML="One More";
