@@ -48,7 +48,7 @@ window.addEventListener("DOMContentLoaded",()=>{
     });
     function endGame(){
      const rerun=document.createElement("button");
-     rerun.innerHTML="One More"
+     rerun.innerHTML="One More";
      const res= document.querySelector("#results");
      res.appendChild(rerun);
 
@@ -56,6 +56,8 @@ window.addEventListener("DOMContentLoaded",()=>{
         guess.textContent="";
         guesses.textContent="";
         value=getRandom();
+        const border_rm= document.querySelector("#results");
+        border_rm.style.border = "";
         count=0;
         res.removeChild(rerun);
     });
