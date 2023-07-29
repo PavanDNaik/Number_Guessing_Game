@@ -11,17 +11,20 @@
 <body>
     <h1 class="heading">Number Guessing Game</h1>
 
-    <p >We have selected a random number between 1 and 500. see if you can Guess it in 10 turns we will tell you if its higher and lower</p>
+    <p >We have selected a random number between 1 and 1000. see if you can Guess it in 10 turns we will tell you if its higher and lower</p>
     
     <div class="form">
         <label for="guessfield">Enter the number: </label>
-        <input type="number" id="guessField" class="guessfield" min="1" max="500">
+        <input type="number" id="guessField" class="guessfield" min="1" max="1000">
         <input type="submit" id="submit" class="submit"/>
     </div>
 
     <div id="results" class="results">
         <p id="guesses"></p>
         <p id="lowOrHi"></p>
+    </div>
+    <div id="tip">
+        <h6>tip: log<sub>2</sub>n</h6>
     </div>
 </body>
 </html>

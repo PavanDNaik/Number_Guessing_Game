@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded",()=>{
 
     function getRandom(){
-        return Math.floor(Math.random()*(500-1));
+        return Math.floor(Math.random()*(1000-1));
     }
 
     function highOrLow(v1,v2){
@@ -22,11 +22,11 @@ window.addEventListener("DOMContentLoaded",()=>{
 
     guess.focus();
     guess.addEventListener("keydown",(e) => {
-        if(e.keyCode == 13 && count < 10 && guess.value <= 500)
+        if(e.keyCode == 13 && count < 10 && guess.value <= 1000)
             gameChanger();
     });
     submit.addEventListener("click",() => {
-        if(count < 10 && guess.value <= 500)
+        if(count < 10 && guess.value <= 1000)
             gameChanger();
     });
 
@@ -34,20 +34,26 @@ window.addEventListener("DOMContentLoaded",()=>{
         count++;
         if(guess.value == value){
             guesses.textContent = `You Won! the number was ${value}`;
-            lh.textContent="";
-            guess.value="";
+            results.style.backgroundColor = "green";
+            guesses.style.color = "white";
+            guesses.style.fontWeight = "800";
+            lh.textContent = "";
+            guess.value = "";
             endGame();
         }
         else if( count === 1){
             guesses.textContent = `guesses: ${guess.value}`;
-            lh.textContent=highOrLow(guess.value,value);
-            const temp= document.querySelector("#results");
-            temp.style.border="1px solid black";
-            guess.value="";
+            lh.textContent = highOrLow(guess.value, value);
+            const temp = document.querySelector("#results");
+            temp.style.border = "1px solid black";
+            guess.value = "";
 
         }
         else if( count === 10){
             guesses.textContent = `You Lost! the number was ${value}`;
+            results.style.backgroundColor = "red";
+            guesses.style.color = "white";
+            guesses.style.fontWeight = "800";
             lh.textContent="";
             guess.value="";
             endGame();
@@ -72,6 +78,9 @@ window.addEventListener("DOMContentLoaded",()=>{
         value=getRandom();
         const border_rm= document.querySelector("#results");
         border_rm.style.border = "";
+        results.style.backgroundColor = "antiquewhite";
+        guesses.style.color = "black";
+        guesses.style.fontWeight = "none";
         count=0;
         res.removeChild(rerun);
     });
