@@ -20,7 +20,7 @@ const lh = document.querySelector("#lowOrHi");
 
 guess.focus();
 guess.addEventListener("keydown",(e) => {
-    if(e.keyCode == 13 && count < 10 && guess.value <= 1000)
+    if(e.keyCode == 13 && count < 10 && guess.value <= 1000 && guess.value!="")
         gameChanger();
 });
 submit.addEventListener("click",() => {
@@ -76,10 +76,11 @@ rerun.addEventListener("click",()=>{
     value=getRandom();
     const border_rm= document.querySelector("#results");
     border_rm.style.border = "";
-    results.style.backgroundColor = "antiquewhite";
-    guesses.style.color = "black";
+    results.style.backgroundColor = "#1f2937";
+    guesses.style.color = "white";
     guesses.style.fontWeight = "none";
     count=0;
+    guess.focus();
     res.removeChild(rerun);
 });
 }

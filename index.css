@@ -1,5 +1,6 @@
 body {
-    background-color: antiquewhite;
+    background-color: #1f2937;
+    color: white;
     height: 100vh;
     width: auto;
     display: flex;
@@ -8,24 +9,27 @@ body {
     justify-content: center;
     font-family: 'Courier New', Courier, monospace;
 }
+#results.results{
+    background-color: #1f2937;
+}
 p {
-    font-size: large;
+    font-size: 20px;
     padding: 10px;
     margin:0%;
 }
 
 .heading{
-    font-size: xx-large;
+    font-size: 50px;
 }
 
 .form {
-    font-size: x-large;
+    font-size: 40px;
     margin-top: 30px;
     margin-bottom: 30px;
 }
 
 .results {
-    padding: 20px;
+    padding: 30px;
     width: auto;
     height: auto;
 }
